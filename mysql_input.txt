@@ -1,0 +1,32 @@
+create database hulton;
+
+use hulton;
+
+create table customer(
+	userid char(20) primary key,
+	pwd char(20),
+	name varchar(40),
+	addr char(30),
+	phone char(10),
+	email varchar(20)
+);
+
+create table creditcard(
+	expDate date,
+	type varchar(20),
+	secCode char(6),
+	name varchar(40),
+	billingAddr char(30),
+	cnumber char(16) primary key
+);
+
+create table reservation(
+	userid char(20) primary key,
+	cnumber char(16),
+	checkin date,
+	checkout date,
+	totalAmt double,
+	roomType varchar(10),
+	foreign key (userid) references customer(userid),
+	foreign key (cnumber) references creditcard(cnumber)
+);
