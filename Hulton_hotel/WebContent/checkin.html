@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Check-in</title>
+<script type="text/javascript">
+function validate_form(){
+	var check_in = document.forms["form1"]["check-in"].value;
+	var check_out = document.forms["form1"]["check-out"].value;
+	var date1 = new Date(check_in);
+	var date2 = new Date(check_out);
+	if (date2 < date1){
+		alert("Check-out date cannot be before check-in date");
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+<form name="form1" action="checkIN.jsp" method="post" onsubmit ="return validate_form()">
+
+User Name: <input type="text" name="userid" required/><br/><br/>
+Country: 
+		<select name="country" required>
+			<option value="japan">Japan</option>
+			<option value="italy">Italy</option>
+			<option value="usa">USA</option>			
+		</select><br/><br/>
+
+Check-in date: <input type="date" name="check-in" placeholder="day-month-year" required><br/><br/>
+check-out date: <input type="date" name="check-out" placeholder="day-month-year" required><br/><br/>
+Room Type:
+		<select name="room_type" required>
+			<option value="twin">Twin</option>
+			<option value="deluxe">Deluxe</option>
+			<option value="suite">Suite</option>			
+		</select><br/><br/>
+		
+<input type="submit" value= "Book" />
+</form>
+</body>
+</html>
